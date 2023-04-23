@@ -1,0 +1,48 @@
+{
+  "name": "virtual-keyboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-dev": "webpack",
+    "build": "webpack --node-env=production",
+    "watch": "webpack --watch",
+    "start": "webpack serve",
+    "lint": "eslint --fix --ignore-pattern \"node_modules/\" --ignore-pattern \"/dist/\" ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeePenguin/virtual-keyboard.git"
+  },
+  "eslintConfig": {
+    "env": {
+        "browser": true,
+        "node": true
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeePenguin/virtual-keyboard/issues"
+  },
+  "homepage": "https://github.com/DeePenguin/virtual-keyboard#readme",
+  "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.3",
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "html-webpack-plugin": "^5.5.1",
+    "mini-css-extract-plugin": "^2.7.5",
+    "sass": "^1.62.0",
+    "sass-loader": "^13.2.2",
+    "style-loader": "^3.3.2",
+    "webpack": "^5.80.0",
+    "webpack-cli": "^5.0.2",
+    "webpack-dev-server": "^4.13.3"
+  }
+}
