@@ -2,6 +2,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
@@ -42,10 +43,15 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Virtual keyboard',
+      template: 'index.html',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: `${__dirname}/src/assets/favicons`, to: 'assets/favicons' },
+      ],
     }),
   ],
   module: {
