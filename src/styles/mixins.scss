@@ -4,6 +4,13 @@
   transition: all 0.3s ease;
 }
 
+%list {
+  list-style: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+}
+
 @mixin primary_font ($weight: 400, $style:normal) {
   font: {
     family: "Roboto Mono", monospace;
