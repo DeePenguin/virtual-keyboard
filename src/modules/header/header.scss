@@ -1,4 +1,6 @@
 .header {
+  padding: 10px;
+  
   &__title {
     @include header_font;
     margin: 0;
