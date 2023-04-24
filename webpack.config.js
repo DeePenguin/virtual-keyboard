@@ -2,7 +2,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
@@ -43,23 +42,35 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'index.html',
+      template: 'src/index.html',
+      favicon: 'src/assets/favicons/favicon.ico',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
-    }),
-    new CopyPlugin({
-      patterns: [
-        { from: `${__dirname}/src/assets/favicons`, to: 'assets/favicons' },
-      ],
     }),
   ],
   module: {
     rules: [
       {
+        test: /\.html$/i,
+        loader: 'html-loader',
+        options: {
+          minimize: true,
+        },
+      },
+      {
         test: /\.(c|sa|sc)ss$/i,
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [
+                'src/styles/variables.scss',
+                'src/styles/mixins.scss',
+              ],
+            },
+          },
         ],
       },
       {
