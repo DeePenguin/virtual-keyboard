@@ -1,0 +1,9 @@
+@import '../../styles/normalize.css';
+html {
+  height: 100vh;
+}
+
+.page {
+  min-height: 100%;
+  background: $bg-color url("../../assets/images/bg.jpg") center / cover no-repeat;
+}
