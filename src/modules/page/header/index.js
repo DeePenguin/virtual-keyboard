@@ -1,4 +1,4 @@
-import Element from '../../common/element';
+import Element from '../../../common/element';
 import './header.scss';
 import node from './header.html';
 

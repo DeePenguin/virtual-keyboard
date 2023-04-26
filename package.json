@@ -9,7 +9,8 @@
     "build": "webpack --node-env=production",
     "watch": "webpack --watch",
     "start": "webpack serve",
-    "lint": "eslint --fix --ignore-pattern \"node_modules/\" --ignore-pattern \"/dist/\" ."
+    "lint-fix": "eslint --fix --ignore-pattern \"node_modules/\" --ignore-pattern \"/dist/\" .",
+    "lint": "eslint --ignore-pattern \"node_modules/\" --ignore-pattern \"/dist/\" ."
   },
   "repository": {
     "type": "git",

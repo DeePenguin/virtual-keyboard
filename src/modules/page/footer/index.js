@@ -1,4 +1,4 @@
-import Element from '../../common/element';
+import Element from '../../../common/element';
 import './footer.scss';
 import node from './footer.html';
 

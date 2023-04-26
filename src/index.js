@@ -1,4 +1,4 @@
-import App from './modules/app';
+import Page from './modules/page';
 
 // eslint-disable-next-line no-unused-vars
-const app = new App();
+const page = new Page();
