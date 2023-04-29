@@ -27,6 +27,10 @@ export default class Key extends Element {
   init() {
     this.showContent();
     this.addListeners();
+    this.setShiftedValue();
+  }
+
+  setShiftedValue() {
     if (!this.shifted && this.type === 'letter') {
       this.shifted = this.data.toUpperCase();
     }
@@ -36,8 +40,14 @@ export default class Key extends Element {
     this.node.textContent = this.data;
   }
 
-  changeLanguage(newConfig) {
+  changeLang(newConfig) {
     this.config = newConfig;
+    this.type = newConfig.type;
+    this.data = newConfig.key;
+    this.shifted = newConfig.shifted;
+    this.symbol = newConfig.symbol;
+    this.setShiftedValue();
+    this.showContent();
   }
 
   press() {

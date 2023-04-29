@@ -315,7 +315,7 @@ const keysMapRu = [{
   },
   AltLeft: {
     code: 'AltLeft',
-    type: 'symbol',
+    type: 'functional',
     key: 'Alt',
   },
   Space: {
@@ -325,7 +325,7 @@ const keysMapRu = [{
   },
   AltRight: {
     code: 'AltRight',
-    type: 'symbol',
+    type: 'functional',
     key: 'Alt',
   },
   ControlRight: {

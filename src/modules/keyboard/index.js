@@ -113,7 +113,8 @@ export default class Keyboard extends Element {
   toNextLang() {
     this.currentLangIndex = (this.currentLangIndex + 1) % this.langs.length;
     this.currentLang = this.langs[this.currentLangIndex];
-    this.state.changeLanguage(this.keysConfig[this.currentLang], this.keys);
-    console.log(this.currentLang);
+    const configMap = this.keysConfig[this.currentLang];
+    configMap.forEach((config) => Object.keys(config)
+      .forEach((keyCode) => this.keys[keyCode].changeLang(config[keyCode])));
   }
 }
