@@ -16,12 +16,20 @@ export default class Key extends Element {
     this.data = this.config.key;
     this.symbol = this.config.symbol;
     this.type = this.config.type;
+    this.shifted = this.config.shifted;
     this.actionDown = fnDown;
     this.actionUp = fnUp;
     this.isKeyPressed = false;
     this.isClicked = false;
+    this.init();
+  }
+
+  init() {
     this.showContent();
     this.addListeners();
+    if (!this.shifted && this.type === 'letter') {
+      this.shifted = this.data.toUpperCase();
+    }
   }
 
   showContent() {
@@ -57,10 +65,18 @@ export default class Key extends Element {
     }
   }
 
+  changeCase() {
+    if (this.type === 'letter') {
+      [this.data, this.shifted] = [this.shifted, this.data];
+      this.showContent();
+    }
+  }
+
   shift() {
-    if (this.type === 'letter') this.data = this.data.toUpperCase();
-    else if (this.type === 'symbol' && this.config.shifted) this.data = this.config.shifted;
-    this.showContent();
+    if (this.shifted) {
+      [this.data, this.shifted] = [this.shifted, this.data];
+      this.showContent();
+    }
   }
 
   handlePointerDown = () => {

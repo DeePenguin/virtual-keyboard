@@ -28,6 +28,7 @@ export default class Keyboard extends Element {
 
   getCurrentLang() {
     this.currentLang = localStorage.getItem('keyboard-lang') || this.langs[0];
+    this.currentLangIndex = this.langs.indexOf(this.currentLang);
   }
 
   saveCurrentLang() {
@@ -55,6 +56,9 @@ export default class Keyboard extends Element {
           case 'CapsLock':
             key = new Key(rowEl, row[keyCode], () => this.handleCaps());
             break;
+          case 'Lang':
+            key = new Key(rowEl, row[keyCode], () => this.toNextLang());
+            break;
           default:
             key = new Key(rowEl, row[keyCode], (data) => this.print(data));
         }
@@ -70,7 +74,10 @@ export default class Keyboard extends Element {
 
   handleKeyDown(e) {
     const currentKey = this.keys[e.code];
-    if ((e.code === 'ShiftLeft' || e.code === 'ShiftRight') && e.repeat) return;
+    if (e.repeat) {
+      const ignoreList = ['ShiftLeft', 'ShiftRight', 'CapsLock'];
+      if (ignoreList.includes(e.code)) return;
+    }
     if (currentKey) {
       currentKey.handleDown();
     }
@@ -101,5 +108,12 @@ export default class Keyboard extends Element {
 
   handleCaps() {
     this.state.handleCaps(this.keys);
+  }
+
+  toNextLang() {
+    this.currentLangIndex = (this.currentLangIndex + 1) % this.langs.length;
+    this.currentLang = this.langs[this.currentLangIndex];
+    this.state.changeLanguage(this.keysConfig[this.currentLang], this.keys);
+    console.log(this.currentLang);
   }
 }

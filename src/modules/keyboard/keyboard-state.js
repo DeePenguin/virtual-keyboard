@@ -7,11 +7,11 @@ export default class KeyboardState {
 
   handleShift(keys) {
     this.isShifted = !this.isShifted;
-    console.log(this);
+    Object.values(keys).forEach((key) => key.shift());
   }
 
   handleCaps(keys) {
     this.isCapsed = !this.isCapsed;
-    console.log(this);
+    Object.values(keys).forEach((key) => key.changeCase());
   }
 }
