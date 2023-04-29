@@ -2,6 +2,7 @@ import './main.scss';
 import Element from '../../../common/element';
 import Output from '../../output';
 import info from './info';
+import Keyboard from '../../keyboard';
 
 const main = new Element({
   parentNode: document.body,
@@ -15,6 +16,8 @@ const components = new Element({
 });
 
 const output = new Output(components.node);
+
+const keyboard = new Keyboard(components.node, output);
 
 components.append(info.node);
 

@@ -4,9 +4,10 @@
 }
 
 .components {
-  min-height: 100%;
   background: #ffffff64;
   border-radius: $border-radius;
   padding: 20px;
   overflow: hidden;
+  @include flex-col($wrap: nowrap, $ali: stretch);
+  gap: 20px;
 }

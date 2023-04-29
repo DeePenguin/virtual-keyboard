@@ -1,0 +1,28 @@
+.key {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 30px;
+  min-width: 30px;
+  border: none;
+  outline: none;
+  background-color: rgba(80, 9, 113, 0.564);
+  color: rgb(252, 189, 229);
+  padding: 5px;
+  border-radius: 5px;
+
+  @include m-hover() {
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  &_pressed {
+    background-color: rgba(106, 16, 217, 0.59);
+  }
+
+  &_space {
+    flex-basis: 35%;
+  }
+}
