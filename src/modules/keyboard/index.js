@@ -103,10 +103,12 @@ export default class Keyboard extends Element {
 
   handleShift() {
     this.state.handleShift(this.keys);
+    this.output.focus();
   }
 
   handleCaps() {
     this.state.handleCaps(this.keys);
+    this.output.focus();
   }
 
   toNextLang() {
@@ -115,5 +117,6 @@ export default class Keyboard extends Element {
     const configMap = this.keysConfig[this.currentLang];
     configMap.forEach((config) => Object.keys(config)
       .forEach((keyCode) => this.keys[keyCode].changeLang(config[keyCode])));
+    this.output.focus();
   }
 }

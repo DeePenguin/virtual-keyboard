@@ -36,6 +36,6 @@ export default class Output extends Element {
   }
 
   focus() {
-    this.node.focus();
+    setTimeout(() => this.node.focus(), 0);
   }
 }
