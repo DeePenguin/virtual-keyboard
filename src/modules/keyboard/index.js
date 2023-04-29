@@ -70,17 +70,16 @@ export default class Keyboard extends Element {
   addListeners() {
     window.addEventListener('keydown', (e) => this.handleKeyDown(e));
     window.addEventListener('keyup', (e) => this.handleKeyUp(e));
+    window.addEventListener('beforeunload', () => this.saveCurrentLang());
   }
 
   handleKeyDown(e) {
     const currentKey = this.keys[e.code];
-    if (e.repeat) {
-      const ignoreList = ['ShiftLeft', 'ShiftRight', 'CapsLock'];
-      if (ignoreList.includes(e.code)) return;
-    }
     if (currentKey) {
+      if (e.repeat && !currentKey.repeat) return;
       currentKey.handleDown();
     }
+    if ((e.code === 'AltLeft' && e.ctrlKey) || (e.code === 'ControlLeft' && e.altKey)) this.toNextLang();
   }
 
   handleKeyUp(e) {

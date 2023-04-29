@@ -17,6 +17,7 @@ export default class Key extends Element {
     this.symbol = this.config.symbol;
     this.type = this.config.type;
     this.shifted = this.config.shifted;
+    this.repeat = this.config.repeat;
     this.actionDown = fnDown;
     this.actionUp = fnUp;
     this.isKeyPressed = false;
@@ -46,13 +47,14 @@ export default class Key extends Element {
     this.data = newConfig.key;
     this.shifted = newConfig.shifted;
     this.symbol = newConfig.symbol;
+    this.repeat = newConfig.repeat;
     this.setShiftedValue();
     this.showContent();
   }
 
   press() {
     this.node.classList.add('key_pressed');
-    const data = this.symbol || this.data;
+    const data = this.symbol ?? this.data;
     this.actionDown(data);
   }
 
