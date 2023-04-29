@@ -18,6 +18,8 @@ export default class Key extends Element {
     this.type = this.config.type;
     this.actionDown = fnDown;
     this.actionUp = fnUp;
+    this.isKeyPressed = false;
+    this.isClicked = false;
     this.showContent();
     this.addListeners();
   }
@@ -32,21 +34,27 @@ export default class Key extends Element {
 
   press() {
     this.node.classList.add('key_pressed');
+    const data = this.symbol || this.data;
+    this.actionDown(data);
   }
 
   unpress() {
     this.node.classList.remove('key_pressed');
+    if (this.actionUp) this.actionUp();
   }
 
   handleDown() {
-    const data = this.symbol || this.data;
-    this.press();
-    this.actionDown(data);
+    if (!this.isClicked) {
+      this.isKeyPressed = true;
+      this.press();
+    }
   }
 
   handleUp() {
-    this.unpress();
-    if (this.actionUp) this.actionUp();
+    if (this.isKeyPressed) {
+      this.isKeyPressed = false;
+      this.unpress();
+    }
   }
 
   shift() {
@@ -55,21 +63,46 @@ export default class Key extends Element {
     this.showContent();
   }
 
+  handlePointerDown = () => {
+    if (!this.isKeyPressed) {
+      this.isClicked = true;
+      this.press();
+    }
+  };
+
+  handlePointerUp = () => {
+    if (this.isClicked) {
+      this.isClicked = false;
+      this.unpress();
+    }
+  };
+
+  handlePointerLeave = () => {
+    if (this.isClicked) {
+      this.isClicked = false;
+      this.unpress();
+    }
+  };
+
   addListeners() {
     this.node.onpointerdown = () => {
-      this.isClicked = true;
-      this.handleDown();
+      if (!this.isKeyPressed) {
+        this.isClicked = true;
+        this.press();
+      }
     };
 
     this.node.onpointerup = () => {
-      this.isClicked = false;
-      this.handleUp();
+      if (this.isClicked) {
+        this.isClicked = false;
+        this.unpress();
+      }
     };
 
     this.node.onpointerleave = () => {
       if (this.isClicked) {
         this.isClicked = false;
-        this.handleUp();
+        this.unpress();
       }
     };
   }
