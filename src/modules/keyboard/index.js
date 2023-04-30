@@ -52,6 +52,9 @@ export default class Keyboard extends Element {
         case 'Backspace':
           key = new Key(this.node, config[keyCode], () => this.backspace());
           break;
+        case 'Delete':
+          key = new Key(this.node, config[keyCode], () => this.delete());
+          break;
         case 'CapsLock':
           key = new Key(this.node, config[keyCode], () => this.handleCaps());
           break;
@@ -107,6 +110,18 @@ export default class Keyboard extends Element {
       .concat(value.substring(selEnd));
     this.output.content = this.value;
     this.output.focus(start);
+  }
+
+  delete() {
+    const value = this.output.content;
+    const [selStart, selEnd] = this.output.getCaretInfo();
+    const end = selStart === selEnd
+      ? Math.min(selEnd + 1, value.length)
+      : selEnd;
+    this.value = value.substring(0, selStart)
+      .concat(value.substring(end));
+    this.output.content = this.value;
+    this.output.focus(selStart);
   }
 
   handleShift() {
