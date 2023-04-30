@@ -1,14 +1,9 @@
 .keyboard {
-  @include flex-col($wrap: nowrap, $jc: center, $ali: stretch);
-  min-height: 100px;
   background-color: rgba(24, 175, 186, 0.579);
   border-radius: 10px;
   padding: 5px;
   gap: 5px;
   user-select: none;
-
-  &-row {
-    @include flex($wrap: nowrap, $jc: start);
-    gap: 5px;
-  }
+  display: grid;
+  grid-template-columns: repeat(32, 1fr);
 }

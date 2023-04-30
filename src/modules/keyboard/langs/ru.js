@@ -1,4 +1,4 @@
-const keysMapRu = [{
+const keysMapRu = {
   Backquote: {
     code: 'Backquote',
     type: 'letter',
@@ -96,8 +96,6 @@ const keysMapRu = [{
     symbol: '',
     repeat: true,
   },
-},
-{
   Tab: {
     code: 'Tab',
     type: 'symbol',
@@ -191,8 +189,6 @@ const keysMapRu = [{
     symbol: '',
     repeat: true,
   },
-},
-{
   CapsLock: {
     code: 'CapsLock',
     type: 'functional',
@@ -273,8 +269,6 @@ const keysMapRu = [{
     symbol: '\n',
     repeat: true,
   },
-},
-{
   ShiftLeft: {
     code: 'ShiftLeft',
     type: 'functional',
@@ -363,8 +357,6 @@ const keysMapRu = [{
     symbol: '',
     repeat: false,
   },
-},
-{
   ControlLeft: {
     code: 'ControlLeft',
     type: 'functional',
@@ -424,7 +416,6 @@ const keysMapRu = [{
     key: '►',
     repeat: true,
   },
-},
-];
+};
 
 export default keysMapRu;

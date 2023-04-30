@@ -37,33 +37,31 @@ export default class Keyboard extends Element {
 
   createKeys() {
     const config = this.keysConfig[this.currentLang];
-    config.forEach((row) => {
-      const rowEl = new Element({
-        parentNode: this.node,
-        className: 'keyboard-row',
-      });
-
-      Object.keys(row).forEach((keyCode) => {
-        let key;
-        switch (keyCode) {
-          case 'ShiftLeft':
-          case 'ShiftRight':
-            key = new Key(rowEl, row[keyCode], () => this.handleShift(), () => this.handleShift());
-            break;
-          case 'Backspace':
-            key = new Key(rowEl, row[keyCode], () => this.backspace());
-            break;
-          case 'CapsLock':
-            key = new Key(rowEl, row[keyCode], () => this.handleCaps());
-            break;
-          case 'Lang':
-            key = new Key(rowEl, row[keyCode], () => this.toNextLang());
-            break;
-          default:
-            key = new Key(rowEl, row[keyCode], (data) => this.print(data));
-        }
-        this.keys[keyCode] = key;
-      });
+    Object.keys(config).forEach((keyCode) => {
+      let key;
+      switch (keyCode) {
+        case 'ShiftLeft':
+        case 'ShiftRight':
+          key = new Key(
+            this.node,
+            config[keyCode],
+            () => this.handleShift(),
+            () => this.handleShift(),
+          );
+          break;
+        case 'Backspace':
+          key = new Key(this.node, config[keyCode], () => this.backspace());
+          break;
+        case 'CapsLock':
+          key = new Key(this.node, config[keyCode], () => this.handleCaps());
+          break;
+        case 'Lang':
+          key = new Key(this.node, config[keyCode], () => this.toNextLang());
+          break;
+        default:
+          key = new Key(this.node, config[keyCode], (data) => this.print(data));
+      }
+      this.keys[keyCode] = key;
     });
   }
 
@@ -114,9 +112,9 @@ export default class Keyboard extends Element {
   toNextLang() {
     this.currentLangIndex = (this.currentLangIndex + 1) % this.langs.length;
     this.currentLang = this.langs[this.currentLangIndex];
-    const configMap = this.keysConfig[this.currentLang];
-    configMap.forEach((config) => Object.keys(config)
-      .forEach((keyCode) => this.keys[keyCode].changeLang(config[keyCode])));
+    const config = this.keysConfig[this.currentLang];
+    Object.keys(config)
+      .forEach((keyCode) => this.keys[keyCode].changeLang(config[keyCode]));
     this.output.focus();
   }
 }

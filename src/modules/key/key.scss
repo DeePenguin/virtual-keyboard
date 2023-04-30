@@ -1,16 +1,20 @@
 .key {
+  @extend %transition-s;
   display: inline-flex;
-  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  gap: 5px;
   min-height: 30px;
   min-width: 30px;
   border: none;
   outline: none;
-  background-color: rgba(80, 9, 113, 0.564);
+  background-color: rgba(80, 9, 113, 0.74);
   color: rgb(252, 189, 229);
   padding: 5px;
   border-radius: 5px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5),
+    inset 2px 2px 2px rgba(255, 255, 255, 0.3);
+  grid-column: span 2;
 
   @include m-hover() {
     &:hover{
@@ -19,10 +23,50 @@
   }
 
   &_pressed {
-    background-color: rgba(106, 16, 217, 0.59);
+    box-shadow: none;
+    transform: translate(2px,2px);
   }
 
+  &_backspace {
+    grid-column: span 6;
+  }
+
+  &_tab {
+    grid-column: span 4;
+  }
+
+  &_enter {
+    grid-column: span 5;
+  }
+
+  &_shiftleft,
+  &_shiftright {
+    grid-column: span 4;
+  }
+
+  &_altleft,
+  &_altright {
+    grid-column: span 3;
+  }
+
+
   &_space {
-    flex-basis: 35%;
+    grid-column: span 14;
+  }
+
+  &_capslock {
+    grid-column: span 5;
+    &::after {
+      content: "";
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 100%;
+      background-color: black;
+      align-self: flex-start;
+    }
+    &_on::after {
+      background-color: rgb(3, 255, 20);
+    }
   }
 }

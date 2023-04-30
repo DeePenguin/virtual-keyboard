@@ -1,4 +1,4 @@
-const keysMapEn = [{
+const keysMapEn = {
   Backquote: {
     code: 'Backquote',
     type: 'symbol',
@@ -97,8 +97,6 @@ const keysMapEn = [{
     symbol: '',
     repeat: true,
   },
-},
-{
   Tab: {
     code: 'Tab',
     type: 'symbol',
@@ -194,8 +192,6 @@ const keysMapEn = [{
     symbol: '',
     repeat: true,
   },
-},
-{
   CapsLock: {
     code: 'CapsLock',
     type: 'functional',
@@ -278,8 +274,6 @@ const keysMapEn = [{
     symbol: '\n',
     repeat: true,
   },
-},
-{
   ShiftLeft: {
     code: 'ShiftLeft',
     type: 'functional',
@@ -370,8 +364,6 @@ const keysMapEn = [{
     symbol: '',
     repeat: false,
   },
-},
-{
   ControlLeft: {
     code: 'ControlLeft',
     type: 'functional',
@@ -431,7 +423,6 @@ const keysMapEn = [{
     key: '►',
     repeat: true,
   },
-},
-];
+};
 
 export default keysMapEn;

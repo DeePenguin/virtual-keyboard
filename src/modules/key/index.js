@@ -91,6 +91,10 @@ export default class Key extends Element {
     }
   }
 
+  toggle(className) {
+    this.node.classList.toggle(className);
+  }
+
   handlePointerDown = () => {
     if (!this.isKeyPressed) {
       this.isClicked = true;

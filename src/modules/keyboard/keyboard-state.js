@@ -13,5 +13,6 @@ export default class KeyboardState {
   handleCaps(keys) {
     this.isCapsed = !this.isCapsed;
     Object.values(keys).forEach((key) => key.changeCase());
+    keys.CapsLock.toggle('key_capslock_on');
   }
 }
