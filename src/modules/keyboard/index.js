@@ -19,10 +19,10 @@ export default class Keyboard extends Element {
   }
 
   init() {
-    this.state = new KeyboardState(this);
     this.value = this.output.content;
     this.getCurrentLang();
     this.createKeys();
+    this.state = new KeyboardState(this);
     this.addListeners();
   }
 
@@ -88,15 +88,25 @@ export default class Keyboard extends Element {
   }
 
   print(data) {
-    this.value += data;
+    const value = this.output.content;
+    const [start, end] = this.output.getCaretInfo();
+    this.value = value.substring(0, start)
+      .concat(data)
+      .concat(value.substring(end));
     this.output.content = this.value;
-    this.output.focus();
+    this.output.focus(start + 1);
   }
 
   backspace() {
-    this.value = this.value.slice(0, -1);
+    const value = this.output.content;
+    const [selStart, selEnd] = this.output.getCaretInfo();
+    const start = selStart === selEnd
+      ? Math.max(selStart - 1, 0)
+      : selStart;
+    this.value = value.substring(0, start)
+      .concat(value.substring(selEnd));
     this.output.content = this.value;
-    this.output.focus();
+    this.output.focus(start);
   }
 
   handleShift() {

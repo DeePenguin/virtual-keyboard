@@ -10,7 +10,6 @@ export default class Output extends Element {
         placeholder: 'Type something...',
       },
     });
-    this.value = '';
     this.node.autofocus = true;
     this.createContainerEl(parentNode);
     this.container.append(this.node);
@@ -27,15 +26,22 @@ export default class Output extends Element {
   }
 
   get content() {
-    return this.value;
+    return this.node.value;
   }
 
   set content(value) {
-    this.value = value;
-    this.node.value = this.value;
+    this.node.value = value;
   }
 
-  focus() {
-    setTimeout(() => this.node.focus(), 0);
+  focus(caretPos) {
+    setTimeout(() => {
+      this.node.focus();
+      this.node.selectionStart = caretPos;
+      this.node.selectionEnd = this.node.selectionStart;
+    }, 0);
+  }
+
+  getCaretInfo() {
+    return [this.node.selectionStart, this.node.selectionEnd];
   }
 }
