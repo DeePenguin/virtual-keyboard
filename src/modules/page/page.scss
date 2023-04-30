@@ -6,6 +6,7 @@ html {
 .page {
   min-height: 100%;
   background: $bg-color url("../../assets/images/bg.jpg") center / cover no-repeat;
+  background-attachment: fixed;
   @include flex-col();
   @include primary_font();
 }

@@ -8,8 +8,8 @@
   min-width: 30px;
   border: none;
   outline: none;
-  background-color: rgba(80, 9, 113, 0.74);
-  color: rgb(252, 189, 229);
+  background: $accent-color;
+  color: $dark-color-l;
   padding: 5px;
   border-radius: 5px;
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5),
@@ -20,6 +20,12 @@
     &:hover{
       cursor: pointer;
     }
+  }
+
+  &_special {
+    background-color: $light-color-m;
+    color: $dark-color-xl;
+    font-size: 0.8em;
   }
 
   &_pressed {
@@ -55,18 +61,27 @@
   }
 
   &_capslock {
+    @extend %transition-s;
     grid-column: span 5;
+
     &::after {
+      @extend %transition-s;
       content: "";
       display: block;
       width: 6px;
       height: 6px;
       border-radius: 100%;
-      background-color: black;
+      background-color: $dark-color-m;
       align-self: flex-start;
     }
-    &_on::after {
-      background-color: rgb(3, 255, 20);
+    &_on {
+      color: $accent-color;
+      text-shadow: 0 0 3px $accent-color-xl;
+
+      &::after {
+      box-shadow: 0 0 5px 3px $accent-color-xl;
+      background: $light-color-xl;
+      }
     }
   }
 }

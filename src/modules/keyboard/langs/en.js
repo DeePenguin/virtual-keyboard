@@ -96,6 +96,7 @@ const keysMapEn = {
     key: 'Backspace',
     symbol: '',
     repeat: true,
+    style: 'special',
   },
   Tab: {
     code: 'Tab',
@@ -103,6 +104,7 @@ const keysMapEn = {
     key: 'Tab',
     symbol: '\t',
     repeat: true,
+    style: 'special',
   },
   KeyQ: {
     code: 'KeyQ',
@@ -191,6 +193,7 @@ const keysMapEn = {
     key: 'Del',
     symbol: '',
     repeat: true,
+    style: 'special',
   },
   CapsLock: {
     code: 'CapsLock',
@@ -198,6 +201,7 @@ const keysMapEn = {
     key: 'CapsLock',
     symbol: '',
     repeat: false,
+    style: 'special',
   },
   KeyA: {
     code: 'KeyA',
@@ -273,6 +277,7 @@ const keysMapEn = {
     key: 'Enter',
     symbol: '\n',
     repeat: true,
+    style: 'special',
   },
   ShiftLeft: {
     code: 'ShiftLeft',
@@ -280,6 +285,7 @@ const keysMapEn = {
     key: 'Shift',
     symbol: '',
     repeat: false,
+    style: 'special',
   },
   KeyZ: {
     code: 'KeyZ',
@@ -350,12 +356,14 @@ const keysMapEn = {
     key: 'Shift',
     symbol: '',
     repeat: false,
+    style: 'special',
   },
   ArrowUp: {
     code: 'ArrowUp',
     type: 'symbol',
     key: '▲',
     repeat: true,
+    style: 'special',
   },
   Lang: {
     code: 'Lang',
@@ -363,6 +371,7 @@ const keysMapEn = {
     key: 'Lang',
     symbol: '',
     repeat: false,
+    style: 'special',
   },
   ControlLeft: {
     code: 'ControlLeft',
@@ -370,6 +379,7 @@ const keysMapEn = {
     key: 'Ctrl',
     symbol: '',
     repeat: false,
+    style: 'special',
   },
   MetaLeft: {
     code: 'MetaLeft',
@@ -377,6 +387,7 @@ const keysMapEn = {
     key: 'Meta',
     symbol: '',
     repeat: false,
+    style: 'special',
   },
   AltLeft: {
     code: 'AltLeft',
@@ -384,6 +395,7 @@ const keysMapEn = {
     key: 'Alt',
     symbol: '',
     repeat: false,
+    style: 'special',
   },
   Space: {
     code: 'Space',
@@ -397,6 +409,7 @@ const keysMapEn = {
     key: 'Alt',
     symbol: '',
     repeat: false,
+    style: 'special',
   },
   ControlRight: {
     code: 'ControlRight',
@@ -404,24 +417,28 @@ const keysMapEn = {
     key: 'Ctrl',
     symbol: '',
     repeat: false,
+    style: 'special',
   },
   ArrowLeft: {
     code: 'ArrowLeft',
     type: 'symbol',
     key: '◄',
     repeat: true,
+    style: 'special',
   },
   ArrowDown: {
     code: 'ArrowDown',
     type: 'symbol',
     key: '▼',
     repeat: true,
+    style: 'special',
   },
   ArrowRight: {
     code: 'ArrowRight',
     type: 'symbol',
     key: '►',
     repeat: true,
+    style: 'special',
   },
 };
 

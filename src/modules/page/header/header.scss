@@ -1,11 +1,13 @@
 .header {
-  padding: 10px;
-  
+  padding: $padding-s;
+
   &__title {
     @include header_font;
     margin: 0;
     text-align: center;
     font-size: 50px;
-    color: $header-color;
+    color: $primary-color;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2),
+      -2px -2px 2px rgba(255, 255, 255, 0.5);
   }
 }

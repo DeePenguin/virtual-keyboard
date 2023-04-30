@@ -26,6 +26,7 @@ export default class Key extends Element {
   }
 
   init() {
+    if (this.config.style) this.node.classList.add('key_special');
     this.showContent();
     this.addListeners();
     this.setShiftedValue();

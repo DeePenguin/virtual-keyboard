@@ -1,0 +1,15 @@
+.info {
+  color: $accent-color-m;
+  text-shadow: 1px 1px 1px rgb(0 0 0 / 40%);
+  font-size: 0.85em;
+
+  &-text {
+    margin: 0.5em;
+    text-align: center;
+  }
+
+  &-keys {
+    font-style: normal;
+    color: $light-color-l;
+  }
+}

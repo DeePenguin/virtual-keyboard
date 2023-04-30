@@ -1,7 +1,5 @@
 .keyboard {
-  background-color: rgba(24, 175, 186, 0.579);
-  border-radius: 10px;
-  padding: 5px;
+  padding: $padding-xs;
   gap: 5px;
   user-select: none;
   display: grid;
