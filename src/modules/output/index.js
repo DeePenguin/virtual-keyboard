@@ -33,11 +33,11 @@ export default class Output extends Element {
     this.node.value = value;
   }
 
-  focus(caretPos) {
+  focus(selStart, selEnd = selStart) {
     setTimeout(() => {
       this.node.focus();
-      this.node.selectionStart = caretPos;
-      this.node.selectionEnd = this.node.selectionStart;
+      this.node.selectionStart = selStart;
+      this.node.selectionEnd = selEnd;
     }, 0);
   }
 

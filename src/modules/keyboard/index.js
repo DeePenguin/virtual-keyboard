@@ -91,55 +91,59 @@ export default class Keyboard extends Element {
   }
 
   print(data) {
+    this.updateCaretPosition();
     const value = this.output.content;
-    const [start, end] = this.output.getCaretInfo();
-    this.value = value.substring(0, start)
+    this.value = value.substring(0, this.selStart)
       .concat(data)
-      .concat(value.substring(end));
+      .concat(value.substring(this.selEnd));
     this.output.content = this.value;
-    this.output.focus(start + 1);
+    this.output.focus(this.selStart + 1);
   }
 
   backspace() {
+    this.updateCaretPosition();
     const value = this.output.content;
-    const [selStart, selEnd] = this.output.getCaretInfo();
-    const start = selStart === selEnd
-      ? Math.max(selStart - 1, 0)
-      : selStart;
-    this.value = value.substring(0, start)
-      .concat(value.substring(selEnd));
+    if (this.hasSelection) this.selStart = Math.max(this.selStart - 1, 0);
+    this.value = value.substring(0, this.selStart)
+      .concat(value.substring(this.selEnd));
     this.output.content = this.value;
-    this.output.focus(start);
+    this.output.focus(this.selStart);
   }
 
   delete() {
+    this.updateCaretPosition();
     const value = this.output.content;
-    const [selStart, selEnd] = this.output.getCaretInfo();
-    const end = selStart === selEnd
-      ? Math.min(selEnd + 1, value.length)
-      : selEnd;
-    this.value = value.substring(0, selStart)
-      .concat(value.substring(end));
+    if (this.hasSelection) this.selEnd = Math.min(this.selEnd + 1, value.length);
+    this.value = value.substring(0, this.selStart)
+      .concat(value.substring(this.selEnd));
     this.output.content = this.value;
-    this.output.focus(selStart);
+    this.output.focus(this.selStart);
   }
 
   handleShift() {
+    this.updateCaretPosition();
     this.state.handleShift(this.keys);
-    this.output.focus();
+    this.output.focus(this.selStart, this.selEnd);
   }
 
   handleCaps() {
+    this.updateCaretPosition();
     this.state.handleCaps(this.keys);
-    this.output.focus();
+    this.output.focus(this.selStart, this.selEnd);
   }
 
   toNextLang() {
+    this.updateCaretPosition();
     this.currentLangIndex = (this.currentLangIndex + 1) % this.langs.length;
     this.currentLang = this.langs[this.currentLangIndex];
     const config = this.keysConfig[this.currentLang];
     Object.keys(config)
       .forEach((keyCode) => this.keys[keyCode].changeLang(config[keyCode]));
-    this.output.focus();
+    this.output.focus(this.selStart, this.selEnd);
+  }
+
+  updateCaretPosition() {
+    [this.selStart, this.selEnd] = this.output.getCaretInfo();
+    this.hasSelection = this.selStart === this.selEnd;
   }
 }
