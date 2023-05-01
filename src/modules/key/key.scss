@@ -1,5 +1,6 @@
 .key {
   @extend %transition-s;
+  position: relative;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +11,7 @@
   outline: none;
   background: $accent-color;
   color: $dark-color-l;
-  padding: 5px;
+  padding: $padding-xs;
   border-radius: 5px;
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5),
     inset 2px 2px 2px rgba(255, 255, 255, 0.3);
@@ -73,7 +74,10 @@
       border-radius: 100%;
       background-color: $dark-color-m;
       align-self: flex-start;
+      position: absolute;
+      right: $padding-xs;
     }
+
     &_on {
       color: $accent-color;
       text-shadow: 0 0 3px $accent-color-xl;
