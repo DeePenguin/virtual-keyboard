@@ -15,4 +15,12 @@ export default class KeyboardState {
     Object.values(keys).forEach((key) => key.changeCase());
     keys.CapsLock.toggle('key_capslock_on');
   }
+
+  changeLang(config, keys) {
+    Object.keys(config)
+      .forEach((keyCode) => {
+        keys[keyCode].changeLang(config[keyCode]);
+        if (this.isCapsed) keys[keyCode].changeCase();
+      });
+  }
 }
