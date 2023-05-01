@@ -26,6 +26,10 @@ export default class KeyboardState {
   }
 
   changeLang(config, keys) {
+    if (this.isShifted) {
+      this.isShifted = false;
+      this.resetShift(keys.ShiftLeft);
+    }
     Object.keys(config)
       .forEach((keyCode) => {
         keys[keyCode].changeLang(config[keyCode]);
