@@ -16,9 +16,8 @@ const components = new Element({
 });
 
 const output = new Output(components.node);
-
 const keyboard = new Keyboard(components.node, output);
-
+keyboard.init();
 components.append(info.node);
 
 export default main;

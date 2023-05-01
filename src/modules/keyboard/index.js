@@ -15,7 +15,6 @@ export default class Keyboard extends Element {
     this.keys = {};
     this.value = '';
     this.output = output;
-    this.init();
   }
 
   init() {
