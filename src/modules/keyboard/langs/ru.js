@@ -96,6 +96,7 @@ const keysMapRu = {
     symbol: '',
     repeat: true,
     style: 'special',
+    icon: 'backspace',
   },
   Tab: {
     code: 'Tab',
@@ -104,6 +105,7 @@ const keysMapRu = {
     symbol: '\t',
     repeat: true,
     style: 'special',
+    icon: 'keyboard_tab',
   },
   KeyQ: {
     code: 'KeyQ',
@@ -199,6 +201,7 @@ const keysMapRu = {
     symbol: '',
     repeat: false,
     style: 'special',
+    icon: 'keyboard_capslock',
   },
   KeyA: {
     code: 'KeyA',
@@ -273,6 +276,7 @@ const keysMapRu = {
     symbol: '\n',
     repeat: true,
     style: 'special',
+    icon: 'keyboard_return',
   },
   ShiftLeft: {
     code: 'ShiftLeft',
@@ -281,6 +285,7 @@ const keysMapRu = {
     symbol: '',
     repeat: false,
     style: 'special',
+    icon: 'shift',
   },
   KeyZ: {
     code: 'KeyZ',
@@ -350,6 +355,7 @@ const keysMapRu = {
     symbol: '',
     repeat: false,
     style: 'special',
+    icon: 'shift',
   },
   ArrowUp: {
     code: 'ArrowUp',
@@ -365,6 +371,7 @@ const keysMapRu = {
     symbol: '',
     repeat: false,
     style: 'special',
+    icon: 'language',
   },
   ControlLeft: {
     code: 'ControlLeft',
@@ -373,6 +380,7 @@ const keysMapRu = {
     symbol: '',
     repeat: false,
     style: 'special',
+    icon: 'keyboard_control_key',
   },
   MetaLeft: {
     code: 'MetaLeft',
@@ -381,6 +389,7 @@ const keysMapRu = {
     symbol: '',
     repeat: false,
     style: 'special',
+    icon: 'keyboard_command_key',
   },
   AltLeft: {
     code: 'AltLeft',
@@ -389,6 +398,7 @@ const keysMapRu = {
     symbol: '',
     repeat: false,
     style: 'special',
+    icon: 'keyboard_option_key',
   },
   Space: {
     code: 'Space',
@@ -403,6 +413,7 @@ const keysMapRu = {
     symbol: '',
     repeat: false,
     style: 'special',
+    icon: 'keyboard_option_key',
   },
   ControlRight: {
     code: 'ControlRight',
@@ -411,6 +422,7 @@ const keysMapRu = {
     symbol: '',
     repeat: false,
     style: 'special',
+    icon: 'keyboard_control_key',
   },
   ArrowLeft: {
     code: 'ArrowLeft',

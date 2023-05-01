@@ -4,7 +4,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  // gap: 5px;
   min-height: 30px;
   min-width: 30px;
   border: none;
@@ -32,6 +32,39 @@
   &_pressed {
     box-shadow: none;
     transform: translate(2px,2px);
+  }
+
+  &_icon {
+    .icon {
+      @extend %transition-s;
+      display: inline-block;
+      transform: scale(0, 0);
+      width: 0;
+      height: 0;
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 300,
+      'GRAD' 0,
+      'opsz' 20;
+
+      @include m-custom(750px) {
+        transform: scale(1, 1);
+        width: auto;
+        height: auto;
+      }
+    }
+
+    .key-text {
+      @extend %transition-s;
+      display: inline-block;
+
+      @include m-custom(750px) {
+        transform: scale(0, 0);
+        width: 0;
+        height: 0;
+      }
+    }
+
   }
 
   &_backspace {

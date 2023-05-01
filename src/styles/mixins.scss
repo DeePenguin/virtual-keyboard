@@ -56,3 +56,7 @@
 @mixin m-hover {
   @media (hover: hover) { @content; }
 }
+
+@mixin m-custom($width) {
+  @media (max-width: $width) { @content; }
+}

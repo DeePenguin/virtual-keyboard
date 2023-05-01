@@ -27,6 +27,19 @@ export default class Key extends Element {
 
   init() {
     if (this.config.style) this.node.classList.add('key_special');
+    if (this.config.icon) {
+      this.node.classList.add('key_icon');
+      this.node.append(new Element({
+        tag: 'span',
+        className: 'icon material-symbols-rounded',
+        content: this.config.icon,
+      }).node);
+    }
+    this.content = new Element({
+      parentNode: this.node,
+      tag: 'span',
+      className: 'key-text',
+    }).node;
     this.showContent();
     this.addListeners();
     this.setShiftedValue();
@@ -39,7 +52,7 @@ export default class Key extends Element {
   }
 
   showContent() {
-    this.node.textContent = this.data;
+    this.content.textContent = this.data;
   }
 
   changeLang(newConfig) {
