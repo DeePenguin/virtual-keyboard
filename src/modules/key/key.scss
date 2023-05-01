@@ -1,0 +1,130 @@
+.key {
+  @extend %transition-s;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  background: $accent-color;
+  color: $dark-color-l;
+  padding: $padding-xs;
+  border-radius: $radius-s;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5),
+    inset 2px 2px 2px rgba(255, 255, 255, 0.3);
+  grid-column: span 2;
+  grid-row: span 2;
+
+  @include m-hover() {
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  &_special {
+    background-color: $light-color-m;
+    color: $dark-color-xl;
+    font-size: 0.75em;
+  }
+
+  &_pressed {
+    box-shadow: none;
+    transform: translate(2px,2px);
+  }
+
+  &_on {
+    color: $accent-color;
+    text-shadow: 0 0 3px $accent-color-xl;
+  }
+
+  &_icon {
+    .icon {
+      @extend %transition-s;
+      display: inline-block;
+      transform: scale(0, 0);
+      width: 0;
+      height: 0;
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 300,
+      'GRAD' 0,
+      'opsz' 20;
+
+      @include m-custom(750px) {
+        transform: scale(1, 1);
+        width: auto;
+        height: auto;
+      }
+
+      @include m-custom(650px) {
+        transform: scale(0.8, 0.8);
+        width: auto;
+        height: auto;
+      }
+    }
+
+    .key-text {
+      @extend %transition-s;
+      display: inline-block;
+
+      @include m-custom(750px) {
+        transform: scale(0, 0);
+        width: 0;
+        height: 0;
+      }
+    }
+
+  }
+
+  &_backspace {
+    grid-column: span 6;
+  }
+
+  &_tab {
+    grid-column: span 4;
+  }
+
+  &_enter {
+    grid-column: span 5;
+  }
+
+  &_shiftleft,
+  &_shiftright {
+    grid-column: span 4;
+  }
+
+  &_altleft,
+  &_altright {
+    grid-column: span 3;
+  }
+
+
+  &_space {
+    grid-column: span 14;
+  }
+
+  &_capslock {
+    @extend %transition-s;
+    grid-column: span 5;
+
+    &::after {
+      @extend %transition-s;
+      content: "";
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 100%;
+      background-color: $dark-color-m;
+      align-self: flex-start;
+      position: absolute;
+      right: $padding-xs;
+    }
+
+    &.key_on {
+      &::after {
+      box-shadow: 0 0 5px 3px $accent-color-xl;
+      background: $light-color-xl;
+      }
+    }
+  }
+}

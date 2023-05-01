@@ -1,0 +1,14 @@
+.keyboard {
+  $key-size: 2em;
+  $gap: 5px;
+  padding: $padding-xs;
+  gap: $gap;
+  user-select: none;
+  display: grid;
+  grid-template-columns: repeat(32, calc($key-size / 2));
+  grid-auto-rows: calc($key-size / 2);
+
+  @include m-custom(750px) {
+    font-size: 0.8em;
+  }
+}

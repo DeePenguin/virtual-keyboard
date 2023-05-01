@@ -1,0 +1,16 @@
+.main {
+  flex-grow: 1;
+  @include flex-col($wrap: nowrap, $jc: center);
+  padding: $padding-s;
+}
+
+.components {
+  background: $components-bg;
+  border-radius: $radius-xl;
+  padding: $padding-m;
+  overflow: hidden;
+  @include flex-col($wrap: nowrap, $ali: stretch);
+  gap: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5),
+    inset 2px 2px 5px rgba(255, 255, 255, 0.5);
+}

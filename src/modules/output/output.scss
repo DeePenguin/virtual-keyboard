@@ -1,0 +1,58 @@
+.output {
+  border: 0;
+  outline: none;
+  display: block;
+  width: 100%;
+  padding: $padding-s;
+  margin: 0;
+  resize: none;
+  min-height: 150px;
+  border-radius: $radius-m;
+  background: transparent;
+  color: $dark-color-l;
+  scrollbar-gutter: stable;
+  scrollbar-color: $accent-color transparent;
+  scrollbar-width: thin;
+
+  &::placeholder {
+    color: $primary-color;
+  }
+
+  &::-webkit-scrollbar {
+    width: 14px;
+    position: absolute;
+
+    &-button {
+      display: none;
+    }
+
+    &-track {
+      background-color: rgba(0, 0, 0, 0);
+
+      &-piece {
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+
+    &-thumb {
+      border-radius: $radius-xl;
+      background-color: adjust-color($accent-color, $alpha: -0.15);
+      border: 2px solid rgba(0, 0, 0, 0);
+      background-clip: content-box;
+
+      &:hover {
+        background-color: $accent-color;
+        border-width: 0px;
+      }
+    }
+  }
+
+  &-container {
+    padding: $padding-xs;
+    border-radius: $radius-m;
+    background: adjust-color($light-color-l, $alpha: -0.5);
+    box-shadow: inset 2px 2px 5px rgb(0 0 0 / 50%),
+      inset -2px -2px 5px rgb(255 255 255 / 50%);
+  }
+
+}
