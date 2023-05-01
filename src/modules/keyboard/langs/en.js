@@ -360,7 +360,7 @@ const keysMapEn = {
   },
   ArrowUp: {
     code: 'ArrowUp',
-    type: 'symbol',
+    type: 'functional',
     key: '▲',
     repeat: true,
     style: 'special',
@@ -421,21 +421,21 @@ const keysMapEn = {
   },
   ArrowLeft: {
     code: 'ArrowLeft',
-    type: 'symbol',
+    type: 'functional',
     key: '◄',
     repeat: true,
     style: 'special',
   },
   ArrowDown: {
     code: 'ArrowDown',
-    type: 'symbol',
+    type: 'functional',
     key: '▼',
     repeat: true,
     style: 'special',
   },
   ArrowRight: {
     code: 'ArrowRight',
-    type: 'symbol',
+    type: 'functional',
     key: '►',
     repeat: true,
     style: 'special',

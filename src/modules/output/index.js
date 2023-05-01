@@ -10,6 +10,8 @@ export default class Output extends Element {
         placeholder: 'Type something...',
       },
     });
+    this.selStart = 0;
+    this.selEnd = 0;
     this.node.autofocus = true;
     this.createContainerEl(parentNode);
     this.container.append(this.node);
@@ -36,8 +38,7 @@ export default class Output extends Element {
   focus(selStart, selEnd = selStart) {
     setTimeout(() => {
       this.node.focus();
-      this.node.selectionStart = selStart;
-      this.node.selectionEnd = selEnd;
+      this.node.setSelectionRange(selStart, selEnd);
     }, 0);
   }
 

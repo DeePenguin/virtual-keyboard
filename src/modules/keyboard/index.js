@@ -61,6 +61,18 @@ export default class Keyboard extends Element {
         case 'Lang':
           key = new Key(this.node, config[keyCode], () => this.toNextLang());
           break;
+        case 'ArrowUp':
+          key = new Key(this.node, config[keyCode], () => this.moveCursorVertically('backward'));
+          break;
+        case 'ArrowDown':
+          key = new Key(this.node, config[keyCode], () => this.moveCursorVertically('forward'));
+          break;
+        case 'ArrowLeft':
+          key = new Key(this.node, config[keyCode], () => this.moveCursorHorizontally(-1));
+          break;
+        case 'ArrowRight':
+          key = new Key(this.node, config[keyCode], () => this.moveCursorHorizontally(1));
+          break;
         default:
           key = new Key(this.node, config[keyCode], (data) => this.print(data));
       }
@@ -97,7 +109,7 @@ export default class Keyboard extends Element {
       .concat(data)
       .concat(value.substring(this.selEnd));
     this.output.content = this.value;
-    this.output.focus(this.selStart + 1);
+    this.output.focus(this.selStart + data.length);
   }
 
   backspace() {
@@ -145,5 +157,20 @@ export default class Keyboard extends Element {
   updateCaretPosition() {
     [this.selStart, this.selEnd] = this.output.getCaretInfo();
     this.hasSelection = this.selStart === this.selEnd;
+  }
+
+  moveCursorVertically(direction) {
+    this.updateCaretPosition();
+    const selection = window.getSelection();
+    selection.modify('move', direction, 'line');
+    this.updateCaretPosition();
+    this.output.focus(this.selStart);
+  }
+
+  moveCursorHorizontally(direction) {
+    this.updateCaretPosition();
+    this.selStart += direction;
+    this.selStart = Math.max(this.selStart, 0);
+    this.output.focus(this.selStart);
   }
 }
