@@ -45,7 +45,7 @@ export default class Keyboard extends Element {
             this.node,
             config[keyCode],
             () => this.handleShift(),
-            () => this.handleShift(),
+            () => this.handleShift(true),
           );
           break;
         case 'Backspace':
@@ -131,9 +131,9 @@ export default class Keyboard extends Element {
     this.output.focus(this.selStart);
   }
 
-  handleShift() {
+  handleShift(isKeyup) {
     this.updateCaretPosition();
-    this.state.handleShift(this.keys);
+    this.state.handleShift(this.keys, isKeyup);
     this.output.focus(this.selStart, this.selEnd);
   }
 

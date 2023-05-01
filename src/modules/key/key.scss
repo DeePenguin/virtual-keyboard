@@ -32,6 +32,11 @@
     transform: translate(2px,2px);
   }
 
+  &_on {
+    color: $accent-color;
+    text-shadow: 0 0 3px $accent-color-xl;
+  }
+
   &_icon {
     .icon {
       @extend %transition-s;
@@ -115,10 +120,7 @@
       right: $padding-xs;
     }
 
-    &_on {
-      color: $accent-color;
-      text-shadow: 0 0 3px $accent-color-xl;
-
+    &.key_on {
       &::after {
       box-shadow: 0 0 5px 3px $accent-color-xl;
       background: $light-color-xl;

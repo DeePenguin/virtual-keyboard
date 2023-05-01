@@ -5,15 +5,24 @@ export default class KeyboardState {
     this.isCapsed = false;
   }
 
-  handleShift(keys) {
-    this.isShifted = !this.isShifted;
-    Object.values(keys).forEach((key) => key.shift());
+  resetShift(shiftKey) {
+    shiftKey.toggle('key_on', this.isShifted);
+  }
+
+  handleShift(keys, isKeyup) {
+    if (isKeyup && !this.isShifted) {
+      this.resetShift(keys.ShiftLeft);
+    } else {
+      this.isShifted = !this.isShifted;
+      keys.ShiftLeft.toggle('key_on');
+      Object.values(keys).forEach((key) => key.shift());
+    }
   }
 
   handleCaps(keys) {
     this.isCapsed = !this.isCapsed;
+    keys.CapsLock.toggle('key_on');
     Object.values(keys).forEach((key) => key.changeCase());
-    keys.CapsLock.toggle('key_capslock_on');
   }
 
   changeLang(config, keys) {

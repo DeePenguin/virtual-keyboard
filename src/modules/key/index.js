@@ -74,7 +74,6 @@ export default class Key extends Element {
 
   unpress() {
     this.node.classList.remove('key_pressed');
-    if (this.actionUp) this.actionUp();
   }
 
   handleDown() {
@@ -88,6 +87,7 @@ export default class Key extends Element {
     if (this.isKeyPressed) {
       this.isKeyPressed = false;
       this.unpress();
+      if (this.actionUp) this.actionUp();
     }
   }
 
@@ -105,8 +105,8 @@ export default class Key extends Element {
     }
   }
 
-  toggle(className) {
-    this.node.classList.toggle(className);
+  toggle(className, state) {
+    this.node.classList.toggle(className, state);
   }
 
   handlePointerDown = () => {
